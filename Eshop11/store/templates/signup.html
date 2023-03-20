@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %} Register here {% endblock %}
+
+{% block content %}
+<div class="container">
+    <form action="/signup" method="POST" class="form pt-4">
+        {% csrf_token %}
+        <!-- first name -->
+        <div class="col-md-5 mx-auto border rounded p-4">
+            <h3 class="text-center mb-3">Create An Account</h3>
+            {% if error %}
+            <p class="alert text-danger">
+                {{error}}
+            </p>
+            {% endif %}
+        <div class="form-group">
+            <label for="firstname" >First Name</label>
+            <input type="text" class="form-control" value="{{values.first_name}}" id="firstname" name="firstname">
+        </div>
+
+        <!-- last name -->
+        <div class="form-group">
+            <label for="lastname" >Last name</label>
+            <input type="text" class="form-control" value="{{values.last_name}}" id="lastname" name="lastname">
+        </div>
+
+        <!-- phone -->
+        <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" class="form-control" value="{{values.phone}}" id="phone" name="phone" placeholder="999999999">
+        </div>
+
+        <!-- email -->
+        <div class="form-group">
+            <label for="email" >Email</label>
+            <input type="email" class="form-control" value="{{values.email}}" id="email" name="email" placeholder="Example@gmail.com">
+        </div>
+
+        <!-- password -->
+        <div class="form-group">
+            <label for="password" >Password</label>
+            <input type="password" class="form-control" name="password" id="password" placeholder="*******">
+        </div>
+        
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-sm btn-info">Create an Account</button>
+        </div>
+    </div>
+    </form>
+</div>
+{% endblock %}
